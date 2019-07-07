@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+        <link type="text/css" rel="stylesheet" href="./frontend/styles/main.css">
+    </head>
+    <body>
+
+        <div id="colorPicker">
+            <canvas id="colorPickerRange1"></canvas>
+            <canvas id="colorPickerRange2"></canvas>
+        </div>
+        <div class="container">
+            <canvas width="1000" height="1000" id="inputBoard"></canvas>
+            <canvas width="1000" height="1000" id="outputBoard"></canvas>
+            <div id="toolbar">
+                <div class="line">
+                    <div class="button" data-action="fill">
+                        Fill
+                    </div>
+                    <div class="button" data-action="smooth">
+                        Smooth
+                    </div>
+                    <div class="button" data-action="grab">
+                        Grab
+                    </div>
+                    <div class="button" data-action="line">
+                        Line
+                    </div>
+                    <div class="button" data-action="changeColor">
+
+                    </div>
+                </div>
+                <div class="line">
+
+                </div>
+            </div>
+        </div>
+
+
+        <script type ="text/javascript" src="./frontend/scripts/svgKeeper.js"></script>
+        <script type="text/javascript" src="./frontend/scripts/main.js"></script>
+    </body>    
+</html>

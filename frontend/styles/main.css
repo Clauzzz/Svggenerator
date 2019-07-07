@@ -1,0 +1,88 @@
+body{
+    margin:0 auto;
+    overflow:hidden;
+}
+#colorPicker
+{
+    display: none;
+    height: 220px;
+    width: 300px;
+    position: absolute;
+    background-color: rgba(70,70,70,1);
+    z-index: 100;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#colorPickerRange1
+{
+    display: block;
+}
+#colorPickerRange2
+{
+    display: block;
+}
+.container
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(50,50,50,1);
+
+}
+.container canvas
+{
+    margin:10px;
+    background-color: rgba(160, 160, 160, 1);   
+}
+#toolbar
+{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    left: 0;
+}
+.line
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+.button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    background-color: rgba(90,90,90,1);
+}
+.button-active
+{
+    background-color: rgba(100,100,100,1);
+}
+#inputBoard
+{
+    height: 500px;
+    width: 500px;
+    border-width: 1px;
+    border-color:rgba(0,0,0,1);
+    border-style: solid;
+    display: flex;
+
+}
+#outputBoard
+{
+    display: flex;
+    height: 500px;
+    width: 500px;
+    border-color:rgba(0,0,0,1);
+    border-style: solid;
+    border-width: 1px;
+}
