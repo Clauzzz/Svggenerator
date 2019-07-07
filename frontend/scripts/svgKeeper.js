@@ -5,8 +5,12 @@ class SvgKeeper
     {
 
     }
-    updateSvg()
+    updateSvg(trajectory)
     {
-
+        this.currentSvg.push(trajectory);
+    }
+    generateSvg()
+    {
+        
     }
 }
