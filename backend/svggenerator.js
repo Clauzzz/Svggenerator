@@ -1,7 +1,17 @@
 let fs = require('fs');
+
 class SvgGenerator
 {
+    
     constructor()
+    {
+
+    }
+    initializeSvg()
+    {
+        // load all the svgs in the folder
+    }
+    saveSvg()
     {
 
     }

@@ -1,7 +1,9 @@
 <html>
     <head>
         <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-        <link type="text/css" rel="stylesheet" href="./frontend/styles/main.css">
+        <link type="text/css" rel="stylesheet" href="./frontend/dist/styles/main.css">
+        <link type="text/css" rel="stylesheet" href="./frontend/dist/styles/topbar.css">
+        <link type="text/css" rel="stylesheet" href="./frontend/dist/styles/toolbar.css">
     </head>
     <body>
 
@@ -9,9 +11,24 @@
             <canvas id="colorPickerRange1"></canvas>
             <canvas id="colorPickerRange2"></canvas>
         </div>
+
+
         <div class="container">
-            <canvas width="1000" height="1000" id="inputBoard"></canvas>
-            <canvas width="1000" height="1000" id="outputBoard"></canvas>
+
+            <div id="topbar">
+                <div class="topbar-item">
+                    <img src="./frontend/images/new.svg"></img>
+                    <label>New</label>
+                </div>
+                <div class="topbar-item">
+                    <img src="./frontend/images/open.svg"></img>
+                    <label>Open</label>
+                </div>
+                <div class="topbar-item">
+                    <img src="./frontend/images/saveas.svg"></img>
+                    <label>Save as</label>
+                </div>
+            </div>
             <div id="toolbar">
                 <div class="line">
                     <div class="button" data-action="fill">
@@ -30,14 +47,20 @@
 
                     </div>
                 </div>
-                <div class="line">
-
-                </div>
             </div>
+            <!-- <canvas width="1000" height="1000" id="inputBoard"></canvas>
+            <canvas width="1000" height="1000" id="outputBoard"></canvas> -->
+
         </div>
 
 
-        <script type ="text/javascript" src="./frontend/scripts/svgKeeper.js"></script>
-        <script type="text/javascript" src="./frontend/scripts/main.js"></script>
+        <script type ="text/javascript" src="./frontend/dist/scripts/graphic/point.js"></script>
+        <script type ="text/javascript" src="./frontend/dist/scripts/graphic/path.js"></script>
+        <script type ="text/javascript" src="./frontend/dist/scripts/graphic/svg.js"></script>
+        <script type="text/javascript" src="./frontend/dist/scripts/main.js"></script>
+        <script src="./frontend/node_modules/socket.io-client/dist/socket.io.js"></script>
+        <script>
+            var socket = io('http://localhost:8902/');
+        </script>
     </body>    
 </html>

@@ -1,9 +1,13 @@
 const express =require("express");
-let server = express();
-let path = require("path");
-let port = 8900;
+const server = express();
+const path = require("path");
+const port = 8900;
 const bodyParser=require("body-parser");
 
+const ioServer = require('http').Server(server);
+const io = require('socket.io')(ioServer);
+const ioPort = 8902;
+//const io = require('socket.io');
 const SvgGenerator = require("./svggenerator");
 
 
@@ -14,6 +18,14 @@ server.use(express.static(path.join(__dirname,"./../")));
 // SvgGenerator.createSvg("test");
 //console.log(SvgGenerator.readSvg("test"));
 
+
+
+io.on('connection',(socket)=>
+{
+    console.log('Somebody connected! : ', socket.id);
+  
+});
+io.listen(ioPort);
 server.get("/getSvg/:filename",(req,res)=>
 {
     try
