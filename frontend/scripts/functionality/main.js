@@ -1,35 +1,36 @@
-static class Main
+class Main
 {
     
-    initialize()
+    static initialize()
+    {
+
+        Main.createCanvas();
+        Main.createTools();
+    }
+    static createCanvas()
     {
         Main.canvases = [];
-        Main.tools = [];
-        let canvas = new Canvas();
+        let canvas = new Canvas('main',700,1000,'test',1);
         Main.canvases.push(canvas);
     }
-}
-Array.prototype.getCanvas(id)
-{
-    for(let i=0;i<Main.canvases.length;i+=1)
+    static createTools()
     {
-        if(Main.canvases[i].id === id)
-        {
-            return Main.canvases[i];
-            break;
-        }
+        Main.tools = [];
+        let toolbar = document.getElementById('toolbar');
+        let columns = toolbar.getElementsByClassName('line');
+        let tools = columns[0].getElementsByClassName('tool-button')
+
+        let line = new Tool('line','./frontend/images/tools/line.svg',[],tools[0]);
+        let curve = new Tool('curve','./frontend/images/tools/curve.svg',[],tools[1]);
+        let grab = new Tool('grab','./frontend/images/tools/grab.svg',[],tools[2]);
+        let rotate = new Tool('rotate','./frontend/images/tools/rotate.svg',[],tools[3]);
+        let zoom = new Tool('zoom','./frontend/images/tools/zoom.svg',[],tools[4]);
+
+        Main.tools.push(line);
+        Main.tools.push(grab);
+        Main.tools.push(curve);
+        Main.tools.push(rotate);
+        Main.tools.push(zoom);
     }
-    return null;
-}
-Array.prototype.getTool(id)
-{
-    for(let i=0;i<Main.tools.length;i+=1)
-    {
-        if(Main.tools[i].id === id)
-        {
-            return Main.tools[i];
-            break;
-        }
-    }
-    return null;
+
 }

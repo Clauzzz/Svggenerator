@@ -1,4 +1,19 @@
 
+
+Main.initialize();
+
+
+
+
+
+
+
+
+
+
+
+
+
 let toolButton = document.getElementsByClassName('button');
 // ColorPickers
 let colorPicker = document.getElementById('colorPicker');
