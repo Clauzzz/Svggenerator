@@ -23,7 +23,6 @@ class Tool
         this.element.removeEventListener('click',this.selectTool);
         this.element.addEventListener('click',this.unselectTool);
         this.element.classList.add('tool-button-focused');
-        document.getElementsByClassName('container')[0].style.cursor = "url("+this.image+"),pointer";
 
         /*
         for(let i = 0;i<this.eventActions.length;i++)

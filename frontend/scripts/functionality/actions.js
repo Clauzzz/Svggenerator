@@ -1,34 +1,38 @@
-static class Actions
+class Actions
 {
-    fill()
+    static startLine = () =>
+    {
+        let canvas = document.getElementById('main');
+    }
+    static fill = () =>
     {
         
     }
-    drawLine()
+    static drawLine = () =>
     {
 
     }
-    drawSvg()
+    static drawSvg = () =>
     {
 
     }
-    zoomIn()
+    static zoomIn = () =>
     {
 
     }
-    zoomOut()
+    static zoomOut = () =>
     {
 
     }
-    move()
+    static move = () =>
     {
 
     }
-    grab()
+    static grab = () =>
     {
 
     }
-    release()
+    static release = () =>
     {
         
     }
