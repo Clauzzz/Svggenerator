@@ -19,7 +19,7 @@ class Main
         let columns = toolbar.getElementsByClassName('line');
         let tools   = columns[0].getElementsByClassName('tool-button');
 
-        let line    = new Tool('line'   ,Actions.line(Main.canvas.element)  ,tools[0], './frontend/images/tools/line.svg');
+        let line    = new Tool('line'   ,Actions.draw(Main.canvas.element)  ,tools[0], './frontend/images/tools/line.svg');
         let curve   = new Tool('curve'  ,[]                                 ,tools[1],'./frontend/images/tools/curve.svg');
         let grab    = new Tool('grab'   ,[]                                 ,tools[2],'./frontend/images/tools/grab.svg');
         let rotate  = new Tool('rotate' ,[]                                 ,tools[3],'./frontend/images/tools/rotate.svg');

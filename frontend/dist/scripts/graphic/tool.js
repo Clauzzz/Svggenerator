@@ -46,18 +46,8 @@ class Tool
                     && typeof x.action.action!=='undefined')
                     {
                         this.actionReminder = true;
-                        console.log(this);
                     }
-                    x.start.element.addEventListener(x.start.event,(event)=>{
-                        console.log(this);
-                        if(typeof this.actionReminder!=='undefined')
-                        {
-                            x.action.element.addEventListener(x.action.event,x.action.action);
-                            delete this.actionReminder;
-                        }
-                        x.start.action(event);
-                    });
-                    
+                    x.start.element.addEventListener(x.start.event,this.startAction);
                 }
             }
         }
@@ -71,23 +61,34 @@ class Tool
                 {
                     if(typeof x.start.action!=='undefined')
                     {
-                        x.stop.element.addEventListener(x.stop.event,(event)=>{
-                            
-                            if(typeof x.action!=='undefined' 
-                            && typeof x.action.element!=='undefined'
-                            && typeof x.action.event!=='undefined'
-                            && typeof x.action.action!=='undefined')
-                            {
-                                x.action.element.removeEventListener(x.action.event,x.action.action);
-                                this.actionReminder = true;
-                            }
-                            x.stop.action(event);
-                        });
-                        
+                        x.stop.element.addEventListener(x.stop.event,this.stopFunction);
                     }
                 }
             }
         }
+    }
+    startAction =(event)=>
+    {
+        let x = this.actions;
+        if(typeof this.actionReminder!=='undefined')
+        {
+            x.action.element.addEventListener(x.action.event,x.action.action);
+            delete this.actionReminder;
+        }
+        x.start.action(event);
+    }
+    stopFunction = (event) =>
+    {
+        let x = this.actions;
+        if(typeof x.action!=='undefined' 
+        && typeof x.action.element!=='undefined'
+        && typeof x.action.event!=='undefined'
+        && typeof x.action.action!=='undefined')
+        {
+            x.action.element.removeEventListener(x.action.event,x.action.action);
+            this.actionReminder = true;
+        }
+        x.stop.action(event);
     }
     unselectTool = () =>
     {
@@ -101,6 +102,34 @@ class Tool
     }
     removeToolFunctionality = () =>
     {
-
+        let x = this.actions;
+        if(typeof x.start!=='undefined')
+        {
+            if(typeof x.start.element!=='undefined' 
+            && typeof x.start.event!=='undefined' )
+            {
+                if(typeof x.start.action!=='undefined')
+                {
+                    x.start.element.removeEventListener(x.start.event,this.startAction);   
+                }
+            }
+        }
+        if(typeof this.actions.stop!=='undefined')
+        {
+            let x = this.actions;
+            if(typeof x.stop!=='undefined')
+            {
+                if(typeof x.stop.element!=='undefined' 
+                && typeof x.stop.event!=='undefined' )
+                {
+                    if(typeof x.start.action!=='undefined')
+                    {
+                        x.stop.element.removeEventListener(x.stop.event,this.stopFunction);
+                        x.action.element.removeEventListener(x.action.event,x.action.action);
+                        delete this.actionReminder;
+                    }
+                }
+            }
+        }
     }
 }
