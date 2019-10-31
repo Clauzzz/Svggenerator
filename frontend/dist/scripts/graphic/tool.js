@@ -1,14 +1,18 @@
 class Tool
 {
-    constructor(id, imageSrc, actions,element)
+    constructor(id, actions,element, imageSrc)
     {
         this.id = name;
         this.image= imageSrc;
         this.actions = actions;
         this.element = element;
-        
+        this.addElement();
+
+    }
+    addElement = () =>
+    {
         let image = document.createElement("IMG");
-        image.src = imageSrc;
+        image.src = this.image;
         image.classList.add("tool-icon");
         this.element.appendChild(image);
         this.element.addEventListener('click',this.selectTool);
@@ -23,15 +27,67 @@ class Tool
         this.element.removeEventListener('click',this.selectTool);
         this.element.addEventListener('click',this.unselectTool);
         this.element.classList.add('tool-button-focused');
-
-        /*
-        for(let i = 0;i<this.eventActions.length;i++)
+        this.addToolFunctionality();
+        
+    }
+    addToolFunctionality = () =>
+    {
+        let x = this.actions;
+        if(typeof x.start!=='undefined')
         {
-            if(this.eventActions[i].activator === true)
+            if(typeof x.start.element!=='undefined' 
+            && typeof x.start.event!=='undefined' )
             {
-                Main.canvases.getId('main').addEventListener(this.eventActions[i].event,this.eventActions[i].action);
+                if(typeof x.start.action!=='undefined')
+                {
+                    if(typeof x.action!=='undefined' 
+                    && typeof x.action.element!=='undefined'
+                    && typeof x.action.event!=='undefined'
+                    && typeof x.action.action!=='undefined')
+                    {
+                        this.actionReminder = true;
+                        console.log(this);
+                    }
+                    x.start.element.addEventListener(x.start.event,(event)=>{
+                        console.log(this);
+                        if(typeof this.actionReminder!=='undefined')
+                        {
+                            x.action.element.addEventListener(x.action.event,x.action.action);
+                            delete this.actionReminder;
+                        }
+                        x.start.action(event);
+                    });
+                    
+                }
             }
-        }*/
+        }
+        if(typeof this.actions.stop!=='undefined')
+        {
+            let x = this.actions;
+            if(typeof x.stop!=='undefined')
+            {
+                if(typeof x.stop.element!=='undefined' 
+                && typeof x.stop.event!=='undefined' )
+                {
+                    if(typeof x.start.action!=='undefined')
+                    {
+                        x.stop.element.addEventListener(x.stop.event,(event)=>{
+                            
+                            if(typeof x.action!=='undefined' 
+                            && typeof x.action.element!=='undefined'
+                            && typeof x.action.event!=='undefined'
+                            && typeof x.action.action!=='undefined')
+                            {
+                                x.action.element.removeEventListener(x.action.event,x.action.action);
+                                this.actionReminder = true;
+                            }
+                            x.stop.action(event);
+                        });
+                        
+                    }
+                }
+            }
+        }
     }
     unselectTool = () =>
     {
@@ -40,16 +96,11 @@ class Tool
             Main.selectedTool = null; 
         }
         this.element.addEventListener('click',this.selectTool);
-        this.element.classList.remove('tool-button-focused')
+        this.element.classList.remove('tool-button-focused');
+        this.removeToolFunctionality();
     }
-    setSpecialFunctions = (eventActions) =>
+    removeToolFunctionality = () =>
     {
-        /*
-        {
-            "activator":true,
-            "event":"mousedown",
-            "action":""
-        }
-        */
+
     }
 }

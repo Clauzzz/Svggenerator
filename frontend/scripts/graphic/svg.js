@@ -47,7 +47,7 @@ class Svg
     {
         this.points.push(point);
     }
-    generateSvg()
+    static generateSvg()
     {
         this.body ='<svg width="'+this.width+'" height ="'+this.height+'">';
         for(let i=0;i<this.paths.length;i++)
