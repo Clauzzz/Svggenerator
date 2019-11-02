@@ -5,6 +5,7 @@ class Main
     {
         Main.createCanvas();
         Main.createTools();
+        Options.initialize();
     }
     static createCanvas()
     {

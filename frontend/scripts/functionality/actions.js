@@ -12,19 +12,28 @@ class Actions
             {
                 element: element,
                 event:"mousedown",
-                action:() =>{console.log('start drawing');}
+                action:(event) =>
+                {
+                    // create path and add the first point
+                }
             },
             action :
             {
                 element: element,
                 event:"mousemove",
-                action: (event)=>{ console.log('drawiiing');}
+                action: (event)=>
+                {
+                    // add the points
+                }
             },
             stop: 
             {
                 element: element,
                 event:"mouseup",
-                action:() =>{console.log('stop drawing');}
+                action:(event) =>
+                {
+                // optimize shit}
+                }
             }
         };
     }

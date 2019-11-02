@@ -8,5 +8,8 @@ class Canvas
         this.element = element;
         this.type = type;   
     }
-    
+    draw()
+    {
+        
+    }
 }
