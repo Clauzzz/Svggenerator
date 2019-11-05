@@ -3,7 +3,7 @@ class Options
     static autofill = true;
     static strokeColor ="rgba(0,0,0,1);";
     static fillColor = "rgba(100,0,0,1);";
-    initialize()
+    static initialize()
     {
         // Get stroke width
         //test.match(/(?<=stroke-width=)(".*?")/)[0].replace(/\"/g,"'");
