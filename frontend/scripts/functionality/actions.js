@@ -14,7 +14,9 @@ class Actions
                 event:"mousedown",
                 action:(event) =>
                 {
-                    // create path and add the first point
+                    let startPoint = new Point(event.offsetX,event.offsetY);
+                    let path = new Path(1);
+                    path.startPoint(startPoint);
                 }
             },
             action :
@@ -23,7 +25,17 @@ class Actions
                 event:"mousemove",
                 action: (event)=>
                 {
-                    // add the points
+                    let path;
+                    for(let i=0;i<Path.paths.length;i++)
+                    {
+                        if(Path.paths[i].id === 1)
+                        {
+                            path = Path.paths[i];
+                        }
+                    }
+                    let newPoint = new Point(event.offsetX,event.offsetY);
+                    path.addPoint(newPoint);
+
                 }
             },
             stop: 
@@ -32,7 +44,15 @@ class Actions
                 event:"mouseup",
                 action:(event) =>
                 {
-                // optimize shit}
+                    let path;
+                    for(let i=0;i<Path.paths.length;i++)
+                    {
+                        if(Path.paths[i].id === 1)
+                        {
+                            path = Path.paths[i];
+                        }
+                    }
+                    path.createLinePath();
                 }
             }
         };

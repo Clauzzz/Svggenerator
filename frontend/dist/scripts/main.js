@@ -125,30 +125,7 @@ function mouseContextMenu(e)
     e.preventDefault();
     console.log(e);
 }
-function generalAjax(json)
-{
-	let ajax = new XMLHttpRequest();
-	ajax.onreadystatechange=function()
-	{	
-		if(this.readyState==4 && this.status==200)
-		{
-			if(json.fcallback)
-			{
-				json.fcallback(JSON.parse(this.response),json.args);
-			}
-		}
-	}
-	ajax.open(json.method,json.url,true);
-	ajax.setRequestHeader("Content-Type","application/json");
-	if(json.method=="POST")
-	{	
-		ajax.send(JSON.stringify(json.body));
-	}
-	else
-	{
-		ajax.send();
-	}
-}
+
 function getSvg()
 {
     let json = {};

@@ -1,19 +1,20 @@
 class Main
 {
     static canvas; 
-    static initialize()
+    static initialize = () =>
     {
         Main.createCanvas();
         Main.createTools();
         Options.initialize();
     }
-    static createCanvas()
+    static createCanvas = () =>
     {
         Main.canvases = [];
         let mainCanvas = document.getElementById('main');
-        Main.canvas = new Canvas('main',700,1000,mainCanvas,1);
+        Main.canvas = new Canvas('main',mainCanvas,1);
+        Main.canvas.calculateSizesBasedOnScreen(1);
     }
-    static createTools()
+    static createTools = () =>
     {
         Main.tools  = [];
         let toolbar = document.getElementById('toolbar');
@@ -31,6 +32,10 @@ class Main
         Main.tools.push(curve);
         Main.tools.push(rotate);
         Main.tools.push(zoom);
+    }
+    static generalAjax = () =>
+    {
+
     }
 
 }
