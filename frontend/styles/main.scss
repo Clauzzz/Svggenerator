@@ -12,7 +12,6 @@ body{
     height: 220px;
     width: 300px;
     position: absolute;
-    background-color: rgba(70,70,70,1);
     z-index: 100;
     padding: 10px;
     border-radius: 10px;
@@ -33,7 +32,6 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: rgba(50,50,50,1);
 
 }
 #body
@@ -48,8 +46,6 @@ body{
     height: 90%;
     width: calc(70% - 40px);
     border-width: 2px;
-    background-color: rgba(150,150,150,1);
-    border-color:rgba(0,0,0,1);
     border-style: solid;
     display: flex;
     position: relative;
@@ -58,10 +54,6 @@ body{
 }
 #codepanel
 {
-    >*
-    {
-        color:rgb(229, 255, 0);
-    }
     .title
     {
         font-family:Roboto;
@@ -79,7 +71,6 @@ body{
         height: 80%;
         width: 100%;
         word-break: break-all;
-        color:rgb(229, 255, 0);
     }
     position: relative;
     padding: 20px;
@@ -89,5 +80,4 @@ body{
     flex-direction: column;
     display: flex;
     height: 100%;
-    background-color: rgba(0,0,0,1);
 }
