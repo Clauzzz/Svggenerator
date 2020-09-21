@@ -106,9 +106,8 @@ class Path
     {
         this.points.push(point);
     }
-    createLinePath = (points) =>
+    createLinePath = () =>
     {
-        // <path d="M150 0 L75 200 L225 200 Z" />
         let optimizedPoints = this.optimizePath();
         this.path = [];
         for(let i = 1; i< optimizedPoints.length; i+=1)

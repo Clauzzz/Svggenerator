@@ -27,10 +27,10 @@ class Canvas
         }
 
     }
-    calculateSizesBasedOnScreen = (ratio) =>
+    calculateSizesBasedOnScreen = () =>
     {
-        this.width = (window.innerWidth * 0.7 - 40) * ratio;
-        this.height = window.innerHeight * 0.9 * ratio;
+        this.width = Number(getComputedStyle(this.element).width.replace('px',''));
+        this.height = Number(getComputedStyle(this.element).height.replace('px',''));
         this.element.width = this.width;
         this.element.height = this.height;
     }
@@ -40,6 +40,10 @@ class Canvas
         this.height = height;
         this.element.width = this.width;
         this.element.height= this.height;
+    }
+    clearCanvas()
+    {
+        this.contextInput.clearRect(0, 0, this.element.width, this.element.height);
     }
     drawLine(pointA, pointB)
     {

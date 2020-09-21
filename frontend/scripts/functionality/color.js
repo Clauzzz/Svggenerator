@@ -10,4 +10,5 @@ class Color
     {
         Color.bColor = color;
     }
+
 }

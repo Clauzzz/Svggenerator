@@ -16,35 +16,31 @@ class Actions
                 {
                     let startPoint = new Point(event.offsetX,event.offsetY);
                     let path = new Path(1);
+                    Path.pathInProgress = path;
                     path.startPoint(startPoint);
                 }
             },
             action :
-            {
-                element: element,
-                event:"mousemove",
-                action: (event)=>
+            [
                 {
-                    let path;
-                    for(let i=0;i<Path.paths.length;i++)
+                    element: element,
+                    event:"mousemove",
+                    action: (event)=>
                     {
-                        if(Path.paths[i].id === 1)
-                        {
-                            path = Path.paths[i];
-                        }
+                        let path = Path.pathInProgress;
+                        let newPoint = new Point(event.offsetX,event.offsetY);
+                        path.addPoint(newPoint);
+                        
                     }
-                    let newPoint = new Point(event.offsetX,event.offsetY);
-                    path.addPoint(newPoint);
-
                 }
-            },
+            ],
             stop: 
             {
                 element: element,
                 event:"mouseup",
                 action:(event) =>
                 {
-                    let path;
+                    let path = Path.pathInProgress;
                     for(let i=0;i<Path.paths.length;i++)
                     {
                         if(Path.paths[i].id === 1)
@@ -53,6 +49,7 @@ class Actions
                         }
                     }
                     path.createLinePath();
+                    Path.pathInProgress = null
                 }
             }
         };
@@ -61,26 +58,33 @@ class Actions
     {
         return{
             start :
-            {
-                element: element,
-                event:"mousedown",
-                action:(event)=>{console.log('start line');}
-            },
-            stop: {
-                element: element,
-                event:"mouseup",
-                action:() =>{ console.log('stop line');}
-            }
+            [
+                {
+                    element: element,
+                    event:"mousedown",
+                    action:(event)=>{console.log('start line');}
+                }
+            ],
+            stop:
+            [
+                {
+                    element: element,
+                    event:"mouseup",
+                    action:() =>{ console.log('stop line');}
+                }
+            ]
         };
     }
     static fill = () =>
     {
         return {
             start :
-            {
-                event:"click",
-                action:()=>{}
-            }
+            [
+                {
+                    event:"click",
+                    action:()=>{}
+                }
+            ]
         };
 
     }

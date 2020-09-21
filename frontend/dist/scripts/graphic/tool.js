@@ -11,6 +11,7 @@ class Tool
     }
     addElement = () =>
     {
+        // adding the elements in the tool
         let image = document.createElement("IMG");
         image.src = this.image;
         image.classList.add("tool-icon");
@@ -41,9 +42,7 @@ class Tool
                 if(typeof x.start.action!=='undefined')
                 {
                     if(typeof x.action!=='undefined' 
-                    && typeof x.action.element!=='undefined'
-                    && typeof x.action.event!=='undefined'
-                    && typeof x.action.action!=='undefined')
+                    && x.action.length !==0)
                     {
                         this.actionReminder = true;
                     }
@@ -72,7 +71,10 @@ class Tool
         let x = this.actions;
         if(typeof this.actionReminder!=='undefined')
         {
-            x.action.element.addEventListener(x.action.event,x.action.action);
+            for(let i=0 ;i < x.action.length;i+=1)
+            {
+                x.action[i].element.addEventListener(x.action[i].event,x.action[i].action);
+            }
             delete this.actionReminder;
         }
         x.start.action(event);
@@ -80,12 +82,13 @@ class Tool
     stopFunction = (event) =>
     {
         let x = this.actions;
-        if(typeof x.action!=='undefined' 
-        && typeof x.action.element!=='undefined'
-        && typeof x.action.event!=='undefined'
-        && typeof x.action.action!=='undefined')
+        if(typeof x.action!=='undefined' && x.action.length !==0)
         {
-            x.action.element.removeEventListener(x.action.event,x.action.action);
+            for(let i=0; i < x.action.length; i+=1)
+            {
+                x.action[i].element.removeEventListener(x.action[i].event,x.action[i].action);
+            }
+            
             this.actionReminder = true;
         }
         x.stop.action(event);
@@ -125,7 +128,11 @@ class Tool
                     if(typeof x.start.action!=='undefined')
                     {
                         x.stop.element.removeEventListener(x.stop.event,this.stopFunction);
-                        x.action.element.removeEventListener(x.action.event,x.action.action);
+                        for(let i=0;i<x.action.length;i+=1)
+                        {
+                            x.action[i].element.removeEventListener(x.action[i].event,x.action[i].action);
+                        }
+                        
                         delete this.actionReminder;
                     }
                 }
