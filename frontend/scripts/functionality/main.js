@@ -14,7 +14,6 @@ class Main
         Main.canvases = [];
         let mainCanvas = document.getElementById('main');
         Main.canvas = new Canvas('main',mainCanvas,1);
-        Main.canvas.calculateSizesBasedOnScreen();
     }
     static openSvg = () =>
     {

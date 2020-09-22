@@ -43,14 +43,11 @@ body{
 }
 #main
 {
-    height: 90%;
-    width: calc(70% - 40px);
-    border-width: 2px;
-    border-style: solid;
+    height: 100%;
+    width: calc(75% - 40px);
     display: flex;
     position: relative;
     margin:0 auto;
-    border-radius:5px;
 }
 #codepanel
 {
