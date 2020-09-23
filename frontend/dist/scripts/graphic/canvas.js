@@ -54,7 +54,8 @@ class Canvas
         let w = event.x - event.target.offsetLeft -this.gridVertiWidth;
         let h = event.y - event.target.offsetTop -this.gridHorizWidth;
         w = w > 0 ? w : 0;
-        h = h > 0 ? h : 0;
+        h = h > 0 ? ( h < (this.height - this.infoWidth - this.gridHorizWidth) ? h : this.height - this.infoWidth  - this.gridHorizWidth) : 0;
+        
         this.writeCoordinates(w,h);
     }
     clearCoordinates = () =>
@@ -70,7 +71,7 @@ class Canvas
         let aux = this.contextInput.fillStyle;
         this.contextInput.fillStyle = this.infoForegroundColor;
         this.contextInput.font = "16px Roboto";
-        this.contextInput.fillText(x +", "+ y, this.gridHorizWidth + 20 , this.height - this.infoWidth/2 );
+        this.contextInput.fillText(x +", "+ y, this.gridHorizWidth + 20 , this.height - this.infoWidth/2 +8);
         this.contextInput.fillStyle = aux;
     }
     calculateSizesBasedOnScreen = () =>
@@ -195,14 +196,17 @@ class Canvas
     }
     clearCanvas()
     {
-        this.contextInput.clearRect(0, 0, this.element.width, this.element.height);
+        this.contextInput.clearRect(this.gridVertiWidth, this.gridHorizWidth, this.width, this.height - this.infoWidth);
     }
     drawLine(pointA, pointB)
     {
+        let aux = this.contextInput.strokeStyle;
+        let path = new Path2D();
         this.contextInput.strokeStyle = 'black';
         this.contextInput.lineWidth = 5;
-        this.contextInput.moveTo(pointA.x,pointA.y);
-        this.contextInput.lineTo(pointB.x,pointB.y);
-        this.contextInput.stroke();
+        path.moveTo(pointA.x,pointA.y);
+        path.lineTo(pointB.x,pointB.y);
+        this.contextInput.stroke(path);
+        this.contextInput.strokeStyle = aux;
     }
 }

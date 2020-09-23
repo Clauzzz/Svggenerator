@@ -29,6 +29,7 @@ class Tool
         this.element.addEventListener('click',this.unselectTool);
         this.element.classList.add('tool-button-focused');
         this.addToolFunctionality();
+        Pencil.select();
         
     }
     addToolFunctionality = () =>
